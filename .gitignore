@@ -1,0 +1,34 @@
+# remove all config files
+*.json
+*.txt
+*.key
+*.pem
+*.pyc
+*.pyo
+config/
+
+# compiling
+build/
+dist/
+
+# Distribution / packaging
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+#cache 
+__pycache__/
+*.py[cod]
+
+#log
+log/
