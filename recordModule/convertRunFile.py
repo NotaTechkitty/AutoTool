@@ -9,8 +9,8 @@ key_mappings = {
 def convert_to_pyautogui_script(recording, saveID="null"):
     if not recording: 
         return
-    
-    output = open("config/script/run_script_{}.py".format(saveID), "w")
+    save_path = "config/script/run_script_{}.txt".format(saveID)
+    output = open(save_path, "w")
     output.write("import time\n")
     output.write("import pyautogui\n\n")
     
@@ -50,5 +50,5 @@ def convert_to_pyautogui_script(recording, saveID="null"):
             else:
                 output.write("pyautogui.mouseUp()\n")
 
-
+    return save_path
 

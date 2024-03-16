@@ -39,7 +39,7 @@ class FileModule:
     with open(filePath, 'r') as f:
       data = f.read().replace('\n', '')
       return data 
-      
+  
   def writeTextFile(self, filePath, data):
     with open(filePath, 'w') as f:
       f.write(data)

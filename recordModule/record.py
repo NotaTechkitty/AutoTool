@@ -36,7 +36,12 @@ class RecordModule:
   def convertScript(self, data):
     save_temp = fileModule.readTextFromFile("save_path_temp.txt")
     saveId = save_temp.split("_")[-1]
-    convert_to_pyautogui_script(data,saveID=saveId)
+    script_path = convert_to_pyautogui_script(data,saveID=saveId)
+    return script_path
+  
+  def runScript(self, script_path):
+    script = fileModule.openFileData(script_path)
+    exec(script)
   
   # stop recording
   def stop(self):
