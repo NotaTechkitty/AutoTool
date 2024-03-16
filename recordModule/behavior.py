@@ -11,10 +11,13 @@ import time
 import json
 from pynput import mouse, keyboard
 from helper.datetime import convertUnixTime
+from fileModule.fileModule import FileModule
+from encrypt.encryptModule import EncryptModule
 
 recording = [] 
 count = 0
-
+fileModule = FileModule()
+encryptModule = EncryptModule()
 
 current_time_seconds = time.time()
 local_time = time.localtime(current_time_seconds)
@@ -106,9 +109,12 @@ def on_scroll(x, y, dx, dy):
     recording.append(json_object)
 
 def stop_recording():
-    filename = "config/temp_save_{}.json".format(convertUnixTime())
-    with open(filename, 'w') as f:
-        json.dump(recording, f)
+    save_path = fileModule.readTextFromFile("constants/save_path.txt")
+    filepath = save_path + "temp_save_{}".format(convertUnixTime())
+
+    fileModule.writeJsonFile(filepath, recording)
+    
+    fileModule.writeTextFile("save_path_temp.txt", filepath)
 
 def start_recording():
     keyboard_listener = keyboard.Listener(
