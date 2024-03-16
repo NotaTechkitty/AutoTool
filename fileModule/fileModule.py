@@ -18,16 +18,23 @@ class FileModule:
      print("File exists")
     else:
      print("File does not exist")
-     
+  
+  # handle JSON files
   def writeJsonFile(self, fileName, data):
     with open("{}.json".format(fileName), 'w') as f:
         json.dump(data, f)
+        
+  def readJsonFile(self, filePath):
+    with open('{}.json'.format(filePath)) as f:
+      data = json.load(f)
+      return data
+
 
   def openFileData(self, filePath):
     with open(filePath, 'rb') as f:
       data = f.read()
       return data
-      
+  
   def readTextFromFile(self, filePath):
     with open(filePath, 'r') as f:
       data = f.read().replace('\n', '')
